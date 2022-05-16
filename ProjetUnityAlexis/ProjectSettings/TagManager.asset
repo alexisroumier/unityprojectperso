@@ -8,6 +8,9 @@ TagManager:
   - prendre
   - InteractUIobject
   - InteractUIWatch
+  - Character
+  - sceneevents
+  - Canvas
   layers:
   - Default
   - TransparentFX

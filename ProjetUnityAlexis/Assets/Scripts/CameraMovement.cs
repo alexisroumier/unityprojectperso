@@ -1,24 +1,55 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
- 
-public class CameraMovement : MonoBehaviour {
-   
-    //Script test pour créer une caméra qui se déplace sur un nouvelle angle lorsqu'on clique sur un bouton
+using DG.Tweening;
 
-    public Transform target;//the target object
-    private float speedMod = 10.0f;//a speed modifier
-    private Vector3 point;//the coord to the point where the camera looks at
+ 
+public class CameraMovement : MonoBehaviour
+
+{
    
-    void Start () {//Set up things on the start method
-        point = target.transform.position;//get target's coords
-        transform.LookAt(point);//makes the camera look to it
+    public Transform target;
+    private Vector3 point;
+    public Transform y_axis;
+    public Transform x_axis;
+    public Transform z_axis;
+    public float movementTime;
+    public float rotationAmount;
+
+    public Quaternion newRotation;
+
+    private void Start() {
+        newRotation = transform.rotation;
+    }  
+
+    public void Update ()
+    {
+        point = target.transform.position + new Vector3(8, -10, 8);
+        transform.position = point;
+        transform.LookAt(point, Vector3.up);
+//float angle = Mathf.Atan((target.position.x - transform.position.x)/(target.position.z - transform.position.z));      //Possibly wrong sign, depending on your setup
+//transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, angle, transform.rotation.eulerAngles.z);
     }
 
-    //public void GetNextView()
-    //{
-       //transform.LookAt(point, Vector3.right, Time.deltaTime, speedMod);
-    //}
+    public void GetNextView()
+    {
+        newRotation *= Quaternion.Euler(Vector3.up * rotationAmount);
+        //newRotation *= Quaternion.Euler(Vector3.up * -rotationAmount);
+        transform.rotation = Quaternion.Lerp(transform.rotation, newRotation, Time.deltaTime * movementTime);
+        //transform.rotation = this.transform.rotation;
+        //transform.Rotate(0, 90, 1);
+       // target = target.transform.position + new Vector3() Quaternion.EulerAngles(0f, 90f, 0f);
+       //transform.LookAt(point, Vector3.up);
+    }
+
+    public void AlignTo(Transform target)
+    {
+        Sequence seq = DOTween.Sequence();
+        seq.Append(Camera.main.transform.DOMove (target.position + new Vector3(-8, 10, -8), 0.75f));
+        seq.Join (Camera.main.transform.DORotate (new Vector3(30f, 135f, 0f), 0.75f));
+        //transform.rotation = Quaternion.Slerp(transform.rotation, new Quaternion(0f, 45f, 0f, 0f), 1);
+        //transform.RotateAround(target.transform.position, 200 * Vector3.up, Time.deltaTime * 3000);
+    }
 
 }
  
