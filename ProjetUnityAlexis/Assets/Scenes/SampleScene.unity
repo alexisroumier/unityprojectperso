@@ -4563,7 +4563,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 488879744}
         m_TargetAssemblyTypeName: ReadFromCharacter, Assembly-CSharp
-        m_MethodName: DisplayNextSentence
+        m_MethodName: EndDialogue
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4809,6 +4809,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueManager: {fileID: 0}
+  dialogueTrigger: {fileID: 0}
   currentIndex: 0
   panelDialogue: {fileID: 1529777678}
   nameText: {fileID: 1666648820}
@@ -4826,7 +4827,6 @@ MonoBehaviour:
   isTalking: 0
   PlayerCC: {fileID: 1744594562}
   animator: {fileID: 1529777682}
-  dialogueTrigger: {fileID: 0}
 --- !u!1 &532878274
 GameObject:
   m_ObjectHideFlags: 0
@@ -4959,7 +4959,7 @@ MonoBehaviour:
       shortSentence: "Tu as raison, je ne suis pas un bon p\xE8re."
     - choices: 11
       shortSentence: Tu... Tu te trompes !
-  - id: 5
+  - id: 6
     nameNPC: Rosa
     imageNPC: {fileID: 1369676976}
     imageBackground: {fileID: 0}
@@ -4972,7 +4972,7 @@ MonoBehaviour:
       shortSentence: "Tu as raison, je ne suis pas un bon p\xE8re."
     - choices: 11
       shortSentence: Tu... Tu te trompes !
-  - id: 6
+  - id: 7
     nameNPC: Rosa
     imageNPC: {fileID: 1369676976}
     imageBackground: {fileID: 0}
@@ -4982,18 +4982,9 @@ MonoBehaviour:
       bien... Adieu Harry. (Rosa quitte l'appartement en claquant la porte) GAME
       OVER"
     choicesStructure: []
-  - id: 7
-    nameNPC: Rosa
-    imageNPC: {fileID: 0}
-    imageBackground: {fileID: 0}
-    soundToPlay: {fileID: 0}
-    sentences:
-    - "C'est bien la premi\xE8re fois que tu te soucies de ton fils... Mais \xE7a
-      n'efface pas toute la d\xE9ception que tu lui as caus\xE9."
-    choicesStructure: []
   - id: 8
     nameNPC: Rosa
-    imageNPC: {fileID: 0}
+    imageNPC: {fileID: 1369676976}
     imageBackground: {fileID: 0}
     soundToPlay: {fileID: 0}
     sentences:
@@ -5002,7 +4993,16 @@ MonoBehaviour:
     choicesStructure: []
   - id: 9
     nameNPC: Rosa
-    imageNPC: {fileID: 0}
+    imageNPC: {fileID: 1369676976}
+    imageBackground: {fileID: 0}
+    soundToPlay: {fileID: 0}
+    sentences:
+    - "C'est bien la premi\xE8re fois que tu te soucies de ton fils... Mais \xE7a
+      n'efface pas toute la d\xE9ception que tu lui as caus\xE9."
+    choicesStructure: []
+  - id: 10
+    nameNPC: Rosa
+    imageNPC: {fileID: 1369676976}
     imageBackground: {fileID: 0}
     soundToPlay: {fileID: 0}
     sentences:
@@ -9474,7 +9474,7 @@ MonoBehaviour:
   dialogueStructure:
   - id: 0
     nameNPC: Jean
-    imageNPC: {fileID: 1369676976}
+    imageNPC: {fileID: 108703905}
     imageBackground: {fileID: 0}
     soundToPlay: {fileID: 0}
     sentences:
@@ -9594,7 +9594,7 @@ MonoBehaviour:
     choicesStructure: []
   - id: 8
     nameNPC: Rosa
-    imageNPC: {fileID: 0}
+    imageNPC: {fileID: 108703905}
     imageBackground: {fileID: 0}
     soundToPlay: {fileID: 0}
     sentences:
@@ -9603,7 +9603,7 @@ MonoBehaviour:
     choicesStructure: []
   - id: 9
     nameNPC: Rosa
-    imageNPC: {fileID: 0}
+    imageNPC: {fileID: 108703905}
     imageBackground: {fileID: 0}
     soundToPlay: {fileID: 0}
     sentences:
@@ -9612,11 +9612,11 @@ MonoBehaviour:
     choicesStructure: []
   - id: 11
     nameNPC: Rosa
-    imageNPC: {fileID: 1369676976}
+    imageNPC: {fileID: 108703905}
     imageBackground: {fileID: 0}
     soundToPlay: {fileID: 0}
     sentences:
-    - C'est la fin
+    - Adios
     choicesStructure: []
 --- !u!1 &1792341429
 GameObject:
@@ -9958,7 +9958,7 @@ MonoBehaviour:
   objectToFollow: {fileID: 68698232}
   ReadFromCharacter: {fileID: 488879744}
   PlayerCC: {fileID: 1744594562}
-  DialogueManager: {fileID: 1955346110}
+  dialogueManager: {fileID: 1955346110}
 --- !u!114 &1955346110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10208,7 +10208,7 @@ MonoBehaviour:
   objectToFollow: {fileID: 98417480}
   ReadFromCharacter: {fileID: 488879744}
   PlayerCC: {fileID: 1744594562}
-  DialogueManager: {fileID: 2089779121}
+  dialogueManager: {fileID: 2089779121}
 --- !u!1001 &2090469955
 PrefabInstance:
   m_ObjectHideFlags: 0

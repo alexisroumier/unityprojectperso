@@ -7,6 +7,7 @@ public class ReadFromCharacter : MonoBehaviour
 {
 
     public DialogueManager dialogueManager;
+    public DialogueTrigger dialogueTrigger;
     public int currentIndex;
     public GameObject panelDialogue;
     public Text nameText;
@@ -26,7 +27,7 @@ public class ReadFromCharacter : MonoBehaviour
     public static ReadFromCharacter instance;
     public PlayerCC PlayerCC;
     public Animator animator;
-    public DialogueTrigger dialogueTrigger;
+
 
     private void Awake()
     {        
@@ -38,7 +39,6 @@ public class ReadFromCharacter : MonoBehaviour
     private void Start()
     {
         currentIndex = 0;
-        ChoicesStructures = dialogueTrigger.DialogueManager.dialogueCharA.dialogueStructure[currentIndex].choicesStructure;
     }
 
     public void Update()
@@ -49,13 +49,16 @@ public class ReadFromCharacter : MonoBehaviour
             StartDialogue();
         }
         */
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(isTalking)
         {
-            isTalking = true;
-            if(isTalking)
+            ChoicesStructures = dialogueManager.dialogueCharA.dialogueStructure[currentIndex].choicesStructure;
+        }
+        if(isTalking && Input.GetKeyDown(KeyCode.Space) && sentences.Count > 0)
+        {
+            //ChoicesStructures = dialogueManager.dialogueCharA.dialogueStructure[currentIndex].choicesStructure;
             DisplayNextSentence();
         }
-        ChoicesStructures = dialogueManager.dialogueCharA.dialogueStructure[currentIndex].choicesStructure;
+        //ChoicesStructures = dialogueManager.dialogueCharA.dialogueStructure[currentIndex].choicesStructure;
 
     }
 
@@ -63,6 +66,7 @@ public class ReadFromCharacter : MonoBehaviour
     public void StartDialogue()
     {
         PlayerCC._speed = 0;
+        charImage.SetActive(false);
         panelDialogue.SetActive(true);
         animator.SetBool("isOpen", true);
         nameText.text = dialogueManager.dialogueCharA.dialogueStructure[currentIndex].nameNPC;
@@ -74,11 +78,9 @@ public class ReadFromCharacter : MonoBehaviour
         choiceButton2.SetActive(false);
         choiceButton3.SetActive(false);
         sentences.Clear();
-        Debug.Log("Index StartDialogue N° " + currentIndex);
         foreach (var sentence in dialogueManager.dialogueCharA.dialogueStructure[currentIndex].sentences)
         {
             sentences.Enqueue(sentence);
-            Debug.Log("StartDialogue Count : " + sentences.Count);
         }
         DisplayNextSentence();
     }
@@ -89,8 +91,6 @@ public class ReadFromCharacter : MonoBehaviour
         string sentence = sentences.Dequeue();
         Continue.SetActive(false);
         endDialogueButton.SetActive(false);
-        Debug.Log("DisplayNextSentence Count : " + sentences.Count);
-        //Ajouter des "Watchers"
         StopAllCoroutines();
         StartCoroutine(TypeSentence(sentence));
     }
@@ -113,7 +113,10 @@ public class ReadFromCharacter : MonoBehaviour
         if(sentences.Count == 0 && ChoicesStructures.Count == 0)       
         {
             endDialogueButton.SetActive(true);
+            if(Input.GetKeyDown(KeyCode.Space))
+            {
             EndDialogue();
+            }
         }  
 
         if(sentences.Count == 0)
@@ -152,7 +155,6 @@ public class ReadFromCharacter : MonoBehaviour
 
     public void SelectChoice1()
     {
-        Debug.Log("Fin StartDialogue - Choix 1 - Index N° " + currentIndex);
         currentIndex = dialogueManager.dialogueCharA.dialogueStructure[currentIndex].choicesStructure[0].choices;
         StartDialogue();
     }
@@ -173,7 +175,12 @@ public class ReadFromCharacter : MonoBehaviour
     {
         animator.SetBool("isOpen", false);
         charImage.SetActive(false);
+        isTalking = false;
+        dialogueManager = null;
+        dialogueTrigger = null;
+        currentIndex = 0;
         PlayerCC._speed = 5;
+        
     }
 
 }

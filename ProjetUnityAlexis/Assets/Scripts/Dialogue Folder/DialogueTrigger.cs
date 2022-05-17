@@ -12,7 +12,7 @@ public class DialogueTrigger : MonoBehaviour
     public Transform objectToFollow;
     public ReadFromCharacter ReadFromCharacter;
     public PlayerCC PlayerCC;
-    public DialogueManager DialogueManager;
+    public DialogueManager dialogueManager;
 
 
     private void Awake()
@@ -24,8 +24,10 @@ public class DialogueTrigger : MonoBehaviour
     {
         if(isInRange && Input.GetKeyDown(KeyCode.E))
         {
-            GameObject.FindGameObjectWithTag("Canvas").GetComponent<ReadFromCharacter>().dialogueManager = DialogueManager;
+            GameObject.FindGameObjectWithTag("Canvas").GetComponent<ReadFromCharacter>().dialogueManager = dialogueManager;
             GameObject.FindGameObjectWithTag("Canvas").GetComponent<ReadFromCharacter>().dialogueTrigger = this;
+            Debug.Log("Press E : " + ReadFromCharacter.ChoicesStructures.Count);
+            //dialogueManager.dialogueCharA.dialogueStructure[ReadFromCharacter.currentIndex].choicesStructure = ReadFromCharacter.ChoicesStructures;
             TriggerDialogue();
             interactUI.enabled = false;
         }
@@ -54,6 +56,7 @@ public class DialogueTrigger : MonoBehaviour
 
     void TriggerDialogue()
     {
+        ReadFromCharacter.isTalking = true;
         ReadFromCharacter.instance.StartDialogue();
         interactUI.enabled = false;
     }
