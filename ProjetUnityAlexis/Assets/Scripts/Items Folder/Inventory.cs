@@ -7,7 +7,7 @@ public class Inventory : MonoBehaviour
 {
 
     public Item[] itemList = new Item[10];
-    public InventorySlot[] inventorySlots = new InventorySlot[10];
+    public List<InventorySlot> inventorySlots = new List<InventorySlot>();
     public static Inventory instance;
     public int itemCurrentIndex = 0;
     public Image itemImageUI1;
@@ -18,9 +18,9 @@ public class Inventory : MonoBehaviour
     public Text itemDescriptionUI;
     public GameObject inventory;
     bool isHidden = false;
+    public GameObject itemSlotObject;
+    public Transform itemSlotObjectTransform;
 
-    public Button GetNextItemButton;
-    public Button GetPreviousItemButton;
 
     private void Awake()
     {
@@ -54,42 +54,11 @@ public class Inventory : MonoBehaviour
             }
         }
     }
-/*
-    public void GetNextItem()
-    {
-        if(itemList[i] == 0)
-        {
-            return;
-        }
 
-        itemCurrentIndex++;
-        if(itemCurrentIndex > itemList - 1)
-        {
-            itemCurrentIndex = 0;
-            GetNextItemButton.enabled = true;
-        }
-        UpdateInventoryUI();
-    }
-
-    public void GetPreviousItem()
-    {
-        if(itemList[0])
-        {
-            return;
-        }
-
-        itemCurrentIndex--;
-        if(itemCurrentIndex < 0)
-        {
-            itemCurrentIndex = itemList;
-            GetPreviousItemButton.enabled = true;
-        }
-        UpdateInventoryUI();
-    }
-*/
     
     public bool Add(Item item)
     {
+        AddItemSlots();
         for(int i = 0; i < itemList.Length; i++)
         {
             if(itemList[i] == null)
@@ -104,7 +73,7 @@ public class Inventory : MonoBehaviour
 
     public void UpdateInventoryUI()
     {
-        for(int i = 0; i < inventorySlots.Length; i++)
+        for(int i = 0; i < inventorySlots.Count; i++)
         {
             inventorySlots[i].UpdateSlot();
         }
@@ -123,25 +92,26 @@ public class Inventory : MonoBehaviour
             itemImageUI2.sprite = content[contentCurrentIndex].image;
         }
         */
-        if(itemList != null)
+        if(itemList[itemCurrentIndex] != null)
         {
-        itemImageUI1.sprite = itemList[itemCurrentIndex].image;
-        /*itemNameUI.text = itemList[itemCurrentIndex].name;
-        itemDescriptionUI.text = itemList[itemCurrentIndex].description;
-        */
-        GetNextItemButton.gameObject.SetActive(true);
-        GetPreviousItemButton.gameObject.SetActive(true);
+            itemImageUI1.sprite = itemList[itemCurrentIndex].image;
+            /*itemNameUI.text = itemList[itemCurrentIndex].name;
+            itemDescriptionUI.text = itemList[itemCurrentIndex].description;
+            */
         }
         else
         {
             itemImageUI1.sprite = emptyItemImage;
             itemNameUI.text = "";
             itemDescriptionUI.text = "";
-            GetNextItemButton.gameObject.SetActive(false);
-            GetPreviousItemButton.gameObject.SetActive(false);
         }
     }
 
-
+    private void AddItemSlots()
+    {
+        GameObject GO = Instantiate(itemSlotObject, itemSlotObjectTransform);
+        InventorySlot newSlot = GO.GetComponent<InventorySlot>();
+        inventorySlots.Add(newSlot);
+    }
 
 }
