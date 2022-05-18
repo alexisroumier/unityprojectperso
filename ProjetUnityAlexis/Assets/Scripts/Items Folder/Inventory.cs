@@ -6,10 +6,13 @@ using UnityEngine.UI;
 public class Inventory : MonoBehaviour
 {
 
-    public List<Item> content = new List<Item>();
+    public Item[] itemList = new Item[10];
+    public InventorySlot[] inventorySlots = new InventorySlot[10];
     public static Inventory instance;
-    public int contentCurrentIndex = 0;
-    public Image itemImageUI;
+    public int itemCurrentIndex = 0;
+    public Image itemImageUI1;
+    public Image itemImageUI2;
+    public Image itemImageUI3;
     public Sprite emptyItemImage;
     public Text itemNameUI;
     public Text itemDescriptionUI;
@@ -51,54 +54,91 @@ public class Inventory : MonoBehaviour
             }
         }
     }
-
+/*
     public void GetNextItem()
     {
-        if(content.Count == 0)
+        if(itemList[i] == 0)
         {
             return;
         }
 
-        contentCurrentIndex++;
-        if(contentCurrentIndex > content.Count - 1)
+        itemCurrentIndex++;
+        if(itemCurrentIndex > itemList - 1)
         {
-            contentCurrentIndex = 0;
+            itemCurrentIndex = 0;
             GetNextItemButton.enabled = true;
         }
         UpdateInventoryUI();
     }
 
     public void GetPreviousItem()
-        {
-        if(content.Count == 0)
+    {
+        if(itemList[0])
         {
             return;
         }
 
-        contentCurrentIndex--;
-        if(contentCurrentIndex < 0)
+        itemCurrentIndex--;
+        if(itemCurrentIndex < 0)
         {
-            contentCurrentIndex = content.Count - 1;
+            itemCurrentIndex = itemList;
             GetPreviousItemButton.enabled = true;
         }
         UpdateInventoryUI();
     }
+*/
+    
+    public bool Add(Item item)
+    {
+        for(int i = 0; i < itemList.Length; i++)
+        {
+            if(itemList[i] == null)
+            {
+                itemList[i] = item;
+                return true;
+            }
+        }
+        return false;
+    }
+    
 
     public void UpdateInventoryUI()
     {
-        if(content.Count > 0)
+        for(int i = 0; i < inventorySlots.Length; i++)
         {
-        itemImageUI.sprite = content[contentCurrentIndex].image;
-        itemNameUI.text = content[contentCurrentIndex].name;
-        itemDescriptionUI.text = content[contentCurrentIndex].description;
+            inventorySlots[i].UpdateSlot();
+        }
+        
+        /*if(itemImageUI1.sprite != content[contentCurrentIndex].image)
+        {
+            itemImageUI2.sprite = content[contentCurrentIndex + 1].image;
+        }
+        
+        if(contentCurrentIndex == 0)
+        {
+            itemImageUI1.sprite = content[contentCurrentIndex].image;
+        }
+        if(contentCurrentIndex == 1)
+        {
+            itemImageUI2.sprite = content[contentCurrentIndex].image;
+        }
+        */
+        if(itemList != null)
+        {
+        itemImageUI1.sprite = itemList[itemCurrentIndex].image;
+        /*itemNameUI.text = itemList[itemCurrentIndex].name;
+        itemDescriptionUI.text = itemList[itemCurrentIndex].description;
+        */
+        GetNextItemButton.gameObject.SetActive(true);
+        GetPreviousItemButton.gameObject.SetActive(true);
         }
         else
         {
-            itemImageUI.sprite = emptyItemImage;
+            itemImageUI1.sprite = emptyItemImage;
             itemNameUI.text = "";
             itemDescriptionUI.text = "";
-            GetNextItemButton = null;
-            GetPreviousItemButton = null;
+            GetNextItemButton.gameObject.SetActive(false);
+            GetPreviousItemButton.gameObject.SetActive(false);
         }
     }
 

@@ -1,15 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class OpenObjectDetails : MonoBehaviour
 {
 
     public GameObject objectDetails;
+    public Inventory inventory;
     bool isHidden = false;
 
     public void OpenPanel()
     {
+        inventory.itemNameUI.text = inventory.itemList[inventory.itemCurrentIndex].name;
+        inventory.itemDescriptionUI.text = inventory.itemList[inventory.itemCurrentIndex].description;
             if(isHidden)
             {
                 isHidden = false;

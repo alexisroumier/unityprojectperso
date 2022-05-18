@@ -6,7 +6,7 @@ using UnityEngine.UI;
 [System.Serializable]
 public class DialogueManager : MonoBehaviour
 {
-    public DialogueClass dialogueCharA;
+    public DialogueClass charDialogue;
     public bool isTalking = false;
     public int idDialogueStart;
     public int idCurrentDialogue;

@@ -51,7 +51,7 @@ public class ReadFromCharacter : MonoBehaviour
         */
         if(isTalking)
         {
-            ChoicesStructures = dialogueManager.dialogueCharA.dialogueStructure[currentIndex].choicesStructure;
+            ChoicesStructures = dialogueManager.charDialogue.dialogueStructure[currentIndex].choicesStructure;
         }
         if(isTalking && Input.GetKeyDown(KeyCode.Space) && sentences.Count > 0)
         {
@@ -69,8 +69,8 @@ public class ReadFromCharacter : MonoBehaviour
         charImage.SetActive(false);
         panelDialogue.SetActive(true);
         animator.SetBool("isOpen", true);
-        nameText.text = dialogueManager.dialogueCharA.dialogueStructure[currentIndex].nameNPC;
-        charImage = dialogueManager.dialogueCharA.dialogueStructure[currentIndex].imageNPC;
+        nameText.text = dialogueManager.charDialogue.dialogueStructure[currentIndex].nameNPC;
+        charImage = dialogueManager.charDialogue.dialogueStructure[currentIndex].imageNPC;
         charImage.SetActive(true);
         Continue.SetActive(false);
         endDialogueButton.SetActive(false);
@@ -78,7 +78,7 @@ public class ReadFromCharacter : MonoBehaviour
         choiceButton2.SetActive(false);
         choiceButton3.SetActive(false);
         sentences.Clear();
-        foreach (var sentence in dialogueManager.dialogueCharA.dialogueStructure[currentIndex].sentences)
+        foreach (var sentence in dialogueManager.charDialogue.dialogueStructure[currentIndex].sentences)
         {
             sentences.Enqueue(sentence);
         }
@@ -126,21 +126,21 @@ public class ReadFromCharacter : MonoBehaviour
                     choiceButton1.SetActive(true);
                     choiceButton2.SetActive(true);
                     choiceButton3.SetActive(true);
-                    choice1.text = dialogueManager.dialogueCharA.dialogueStructure[currentIndex].choicesStructure[0].shortSentence;
-                    choice2.text = dialogueManager.dialogueCharA.dialogueStructure[currentIndex].choicesStructure[1].shortSentence;
-                    choice3.text = dialogueManager.dialogueCharA.dialogueStructure[currentIndex].choicesStructure[2].shortSentence;
+                    choice1.text = dialogueManager.charDialogue.dialogueStructure[currentIndex].choicesStructure[0].shortSentence;
+                    choice2.text = dialogueManager.charDialogue.dialogueStructure[currentIndex].choicesStructure[1].shortSentence;
+                    choice3.text = dialogueManager.charDialogue.dialogueStructure[currentIndex].choicesStructure[2].shortSentence;
                 }
             if(ChoicesStructures.Count == 2)
                 {
                     choiceButton1.SetActive(true);
                     choiceButton2.SetActive(true);
-                    choice1.text = dialogueManager.dialogueCharA.dialogueStructure[currentIndex].choicesStructure[0].shortSentence;
-                    choice2.text = dialogueManager.dialogueCharA.dialogueStructure[currentIndex].choicesStructure[1].shortSentence;
+                    choice1.text = dialogueManager.charDialogue.dialogueStructure[currentIndex].choicesStructure[0].shortSentence;
+                    choice2.text = dialogueManager.charDialogue.dialogueStructure[currentIndex].choicesStructure[1].shortSentence;
                 }
             if(ChoicesStructures.Count == 1)
                 {
                     choiceButton1.SetActive(true);
-                    choice1.text = dialogueManager.dialogueCharA.dialogueStructure[currentIndex].choicesStructure[0].shortSentence;
+                    choice1.text = dialogueManager.charDialogue.dialogueStructure[currentIndex].choicesStructure[0].shortSentence;
                 }
         }
 
@@ -155,19 +155,19 @@ public class ReadFromCharacter : MonoBehaviour
 
     public void SelectChoice1()
     {
-        currentIndex = dialogueManager.dialogueCharA.dialogueStructure[currentIndex].choicesStructure[0].choices;
+        currentIndex = dialogueManager.charDialogue.dialogueStructure[currentIndex].choicesStructure[0].choices;
         StartDialogue();
     }
 
     public void SelectChoice2()
     {
-        currentIndex = dialogueManager.dialogueCharA.dialogueStructure[currentIndex].choicesStructure[1].choices;
+        currentIndex = dialogueManager.charDialogue.dialogueStructure[currentIndex].choicesStructure[1].choices;
         StartDialogue();
     }
 
     public void SelectChoice3()
     {
-        currentIndex = dialogueManager.dialogueCharA.dialogueStructure[currentIndex].choicesStructure[2].choices;
+        currentIndex = dialogueManager.charDialogue.dialogueStructure[currentIndex].choicesStructure[2].choices;
         StartDialogue();
     }
 

@@ -11,8 +11,6 @@ public class PickUpItem : MonoBehaviour
     public Text pickUp;
     public Item item;
     public AudioClip soundToPlay;
-
-    public Dialogue dialogue;
     public ReadFromCharacter DialogueManager;
     Camera cam;
     public Transform objectToFollow;
@@ -31,7 +29,7 @@ void Start()
         if(Input.GetKeyDown(KeyCode.E) && isInRange)
         {
             TakeItem();
-            if(DialogueManager.sentences.Count > 0)
+            if(DialogueManager != null)
             {
                 TriggerDialogue();
                 DisablePickUp();
@@ -41,7 +39,7 @@ void Start()
 
     void TakeItem()
     {
-        Inventory.instance.content.Add(item);
+        Inventory.instance.Add(item);
         Inventory.instance.UpdateInventoryUI();
         interactUI.enabled = false;
         StartCoroutine(WaitFewSeconds());
