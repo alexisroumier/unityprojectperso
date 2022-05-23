@@ -7,13 +7,16 @@ public class OpenObjectDetails : MonoBehaviour
 {
 
     public GameObject objectDetails;
-    public Inventory inventory;
+  
     bool isHidden = false;
 
     public void OpenPanel()
     {
-        inventory.itemNameUI.text = inventory.itemList[inventory.itemCurrentIndex].name;
-        inventory.itemDescriptionUI.text = inventory.itemList[inventory.itemCurrentIndex].description;
+        /*inventory.itemNameUI.text = inventory.itemList[inventory.itemCurrentIndex].name;
+        inventory.itemDescriptionUI.text = inventory.itemList[inventory.itemCurrentIndex].description;*/
+            Inventory.instance.itemNameUI.text = Inventory.instance.itemList[transform.GetSiblingIndex()].name;
+            Inventory.instance.itemDescriptionUI.text = Inventory.instance.itemList[transform.GetSiblingIndex()].description;
+            
             if(isHidden)
             {
                 isHidden = false;
