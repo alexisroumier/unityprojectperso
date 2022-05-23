@@ -10,15 +10,15 @@ public class Inventory : MonoBehaviour
     public List<InventorySlot> inventorySlots = new List<InventorySlot>();
     public static Inventory instance;
     public int itemCurrentIndex = 0;
-    public Image itemImageUI1;
-    public Image itemImageUI2;
-    public Image itemImageUI3;
+    public Image itemImageUI;
     public Sprite emptyItemImage;
     public Text itemNameUI;
     public Text itemDescriptionUI;
     public GameObject inventory;
     bool isHidden = false;
     public GameObject itemSlotObject;
+    public GameObject content;
+    GameObject prefabContent;
     public Transform itemSlotObjectTransform;
 
 
@@ -30,6 +30,8 @@ public class Inventory : MonoBehaviour
             return;
         }
         instance = this;
+        prefabContent = Instantiate(content);
+        Debug.Log("instantiate");
     }
 
     private void Start()
@@ -41,6 +43,7 @@ public class Inventory : MonoBehaviour
     {
         if(Input.GetKeyUp(KeyCode.I))
         {
+            Debug.Log(isHidden);
             if(isHidden)
             {
                 isHidden = false;
@@ -92,16 +95,19 @@ public class Inventory : MonoBehaviour
             itemImageUI2.sprite = content[contentCurrentIndex].image;
         }
         */
+        Debug.Log(itemCurrentIndex);
+        Debug.Log(itemList);
+        Debug.Log(itemList.Length);
         if(itemList[itemCurrentIndex] != null)
         {
-            itemImageUI1.sprite = itemList[itemCurrentIndex].image;
+            itemImageUI.sprite = itemList[itemCurrentIndex].image;
             /*itemNameUI.text = itemList[itemCurrentIndex].name;
             itemDescriptionUI.text = itemList[itemCurrentIndex].description;
             */
         }
         else
         {
-            itemImageUI1.sprite = emptyItemImage;
+            itemImageUI.sprite = emptyItemImage;
             itemNameUI.text = "";
             itemDescriptionUI.text = "";
         }
@@ -109,7 +115,7 @@ public class Inventory : MonoBehaviour
 
     private void AddItemSlots()
     {
-        GameObject GO = Instantiate(itemSlotObject, itemSlotObjectTransform);
+        GameObject GO = Instantiate(itemSlotObject, prefabContent.transform);
         InventorySlot newSlot = GO.GetComponent<InventorySlot>();
         inventorySlots.Add(newSlot);
     }
