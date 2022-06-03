@@ -39,6 +39,7 @@ void Start()
 
     void TakeItem()
     {
+        //pnjA.DialogueManager.charDialogue = pnjA.
         Inventory.instance.Add(item);
         Inventory.instance.UpdateInventoryUI();
         interactUI.enabled = false;

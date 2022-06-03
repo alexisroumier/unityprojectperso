@@ -12,8 +12,6 @@ public class InventorySlot : MonoBehaviour
         if(Inventory.instance.itemList[transform.GetSiblingIndex()] != null)
         {
             icon.GetComponent<Image>().sprite = Inventory.instance.itemList[transform.GetSiblingIndex()].image;
-            Inventory.instance.itemNameUI.text = Inventory.instance.itemList[transform.GetSiblingIndex()].name;
-            Inventory.instance.itemDescriptionUI.text = Inventory.instance.itemList[transform.GetSiblingIndex()].description;
             icon.SetActive(true);
         }
         else

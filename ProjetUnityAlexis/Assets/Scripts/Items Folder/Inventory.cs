@@ -82,22 +82,11 @@ public class Inventory : MonoBehaviour
         {
             itemImageUI2.sprite = content[contentCurrentIndex + 1].image;
         }
-        
-        if(contentCurrentIndex == 0)
-        {
-            itemImageUI1.sprite = content[contentCurrentIndex].image;
-        }
-        if(contentCurrentIndex == 1)
-        {
-            itemImageUI2.sprite = content[contentCurrentIndex].image;
-        }
         */
+        
         if(itemList[itemCurrentIndex] != null)
         {
             itemImageUI1.sprite = itemList[itemCurrentIndex].image;
-            /*itemNameUI.text = itemList[itemCurrentIndex].name;
-            itemDescriptionUI.text = itemList[itemCurrentIndex].description;
-            */
         }
         else
         {
