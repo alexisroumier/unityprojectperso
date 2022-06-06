@@ -9,7 +9,7 @@ public class CluesInventory : MonoBehaviour
     public Item[] itemList = new Item[10];
     public List<InventorySlot> inventorySlots = new List<InventorySlot>();
     public static CluesInventory instance;
-    public Text pickUp;
+    public Text pickUpText;
     public int itemCurrentIndex = 0;
     public Image itemImageUI1;
     public Image itemImageUI2;
@@ -43,7 +43,7 @@ public class CluesInventory : MonoBehaviour
 
         if(Input.GetKeyUp(KeyCode.G))
         {
-            pickUp.enabled = false;
+            pickUpText.enabled = false;
             if(isHidden)
             {
                 isHidden = false;
@@ -78,7 +78,7 @@ public class CluesInventory : MonoBehaviour
     {
         for(int i = 0; i < inventorySlots.Count; i++)
         {
-            inventorySlots[i].UpdateSlot();
+            inventorySlots[i].UpdateItemSlot();
         }
         
         /*if(itemImageUI1.sprite != content[contentCurrentIndex].image)
@@ -109,7 +109,7 @@ public class CluesInventory : MonoBehaviour
 
     public void OpenCloseCluesInventory()
     {
-        pickUp.enabled = false;
+        pickUpText.enabled = false;
         if(isHidden)
             {
                 isHidden = false;
@@ -120,7 +120,6 @@ public class CluesInventory : MonoBehaviour
             {
                 isHidden = true;
                 cluesInventory.SetActive(isHidden);
-                pickUp.enabled = false;
             }
     }
 

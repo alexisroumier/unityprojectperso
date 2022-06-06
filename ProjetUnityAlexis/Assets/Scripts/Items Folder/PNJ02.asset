@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 10c1c2bf95fe9cc4eb7dc5dc7914a7cb, type: 3}
-  m_Name: PNJ01
+  m_Name: PNJ02
   m_EditorClassIdentifier: 
-  id: 100
-  Name: Maman
-  description: C'est maman. Elle adore lire et chanter.
-  image: {fileID: 21300000, guid: 6beae8228072035449225cc0d6d065aa, type: 3}
+  id: 101
+  Name: Papa
+  description: Un grand homme un peu bourru d'apparence mais il a grand coeur.
+  image: {fileID: 21300000, guid: 15038f92e647a8040843e7e1845e6b80, type: 3}
   IsSelected: 0

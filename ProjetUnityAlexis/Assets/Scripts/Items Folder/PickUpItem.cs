@@ -8,7 +8,7 @@ public class PickUpItem : MonoBehaviour
 
     public Text interactUI;
     private bool isInRange;
-    public Text pickUp;
+    public Text pickUpText;
     public Item item;
     public AudioClip soundToPlay;
     public ReadFromCharacter DialogueManager;
@@ -21,7 +21,7 @@ public class PickUpItem : MonoBehaviour
 
 void Start()
 {
-    pickUp.enabled = false;
+    pickUpText.enabled = false;
     cam = Camera.main;
 }
 
@@ -50,7 +50,7 @@ void Start()
 
     public void NewItemText()
     {
-        pickUp.enabled = true;
+        pickUpText.enabled = true;
         gameObject.SetActive(false);
     }
 

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public class DialogueClass : MonoBehaviour
 {
     public List<DialogueStructure> dialogueStructure = new List<DialogueStructure>();
-
+    public Item suspect;
 }
 
 

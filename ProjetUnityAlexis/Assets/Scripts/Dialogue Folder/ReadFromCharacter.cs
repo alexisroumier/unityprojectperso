@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,6 +28,8 @@ public class ReadFromCharacter : MonoBehaviour
     public static ReadFromCharacter instance;
     public PlayerCC PlayerCC;
     public Animator animator;
+    public Text newSuspectText;
+    public AudioClip soundToPlay;
 
     private void Awake()
     {        
@@ -55,6 +58,7 @@ public class ReadFromCharacter : MonoBehaviour
         if(isTalking && Input.GetKeyDown(KeyCode.Space) && sentences.Count > 0)
         {
             //ChoicesStructures = dialogueManager.dialogueCharA.dialogueStructure[currentIndex].choicesStructure;
+            TakeSuspect();
             DisplayNextSentence();
         }
         //ChoicesStructures = dialogueManager.dialogueCharA.dialogueStructure[currentIndex].choicesStructure;
@@ -178,7 +182,24 @@ public class ReadFromCharacter : MonoBehaviour
         dialogueManager = null;
         dialogueTrigger = null;
         currentIndex = 0;
-        PlayerCC._speed = 5;       
+        PlayerCC._speed = 5;
     }
+
+
+    public void TakeSuspect()
+    {
+        if(Array.IndexOf(SuspectsInventory.instance.suspectList, dialogueManager.charDialogue.suspect) == -1)
+        {
+            SuspectsInventory.instance.Add(dialogueManager.charDialogue.suspect);
+            SuspectsInventory.instance.UpdateInventoryUI();
+            NewSuspectText();
+        }
+    }
+
+    public void NewSuspectText()
+    {
+        newSuspectText.enabled = true;
+    }
+
 
 }

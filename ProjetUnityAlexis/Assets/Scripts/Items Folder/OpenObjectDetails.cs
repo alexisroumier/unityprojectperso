@@ -10,7 +10,7 @@ public class OpenObjectDetails : MonoBehaviour
   
     bool isHidden = false;
 
-    public void OpenPanel()
+    public void OpenItemPanel()
     {
         /*inventory.itemNameUI.text = inventory.itemList[inventory.itemCurrentIndex].name;
         inventory.itemDescriptionUI.text = inventory.itemList[inventory.itemCurrentIndex].description;*/
@@ -30,4 +30,26 @@ public class OpenObjectDetails : MonoBehaviour
                 Time.timeScale = 0f;
             }
     }
+
+    public void OpenSuspectPanel()
+    {
+        /*inventory.itemNameUI.text = inventory.itemList[inventory.itemCurrentIndex].name;
+        inventory.itemDescriptionUI.text = inventory.itemList[inventory.itemCurrentIndex].description;*/
+            SuspectsInventory.instance.itemNameUI.text = SuspectsInventory.instance.suspectList[transform.GetSiblingIndex()].name;
+            SuspectsInventory.instance.itemDescriptionUI.text = SuspectsInventory.instance.suspectList[transform.GetSiblingIndex()].description;
+            
+            if(isHidden)
+            {
+                isHidden = false;
+                objectDetails.SetActive(isHidden);
+                Time.timeScale = 1f;
+            }
+            else
+            {
+                isHidden = true;
+                objectDetails.SetActive(isHidden);
+                Time.timeScale = 0f;
+            }
+    }
+
 }
