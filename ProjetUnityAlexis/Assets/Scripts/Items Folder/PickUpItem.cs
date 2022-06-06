@@ -14,7 +14,8 @@ public class PickUpItem : MonoBehaviour
     public ReadFromCharacter DialogueManager;
     Camera cam;
     public Transform objectToFollow;
-    private float wait;
+    private float wait; 
+    public static PickUpItem instance;
     [SerializeField] private GameObject myObject;
     [SerializeField] private PickUpItem myScript;
 
@@ -29,6 +30,7 @@ void Start()
         if(Input.GetKeyDown(KeyCode.E) && isInRange)
         {
             TakeItem();
+
             if(DialogueManager != null)
             {
                 TriggerDialogue();
@@ -40,17 +42,15 @@ void Start()
     void TakeItem()
     {
         //pnjA.DialogueManager.charDialogue = pnjA.
-        Inventory.instance.Add(item);
-        Inventory.instance.UpdateInventoryUI();
+        CluesInventory.instance.Add(item);
+        CluesInventory.instance.UpdateInventoryUI();
         interactUI.enabled = false;
-        StartCoroutine(WaitFewSeconds());
+        NewItemText();
     }
 
-    IEnumerator WaitFewSeconds() 
+    public void NewItemText()
     {
         pickUp.enabled = true;
-        yield return new WaitForSeconds (1.5f);
-        pickUp.enabled = false;
         gameObject.SetActive(false);
     }
 

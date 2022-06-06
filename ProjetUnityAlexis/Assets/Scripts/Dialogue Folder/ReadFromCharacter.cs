@@ -28,7 +28,6 @@ public class ReadFromCharacter : MonoBehaviour
     public PlayerCC PlayerCC;
     public Animator animator;
 
-
     private void Awake()
     {        
         instance = this;
@@ -179,8 +178,7 @@ public class ReadFromCharacter : MonoBehaviour
         dialogueManager = null;
         dialogueTrigger = null;
         currentIndex = 0;
-        PlayerCC._speed = 5;
-        
+        PlayerCC._speed = 5;       
     }
 
 }

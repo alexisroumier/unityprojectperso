@@ -9,9 +9,9 @@ public class InventorySlot : MonoBehaviour
     public GameObject icon;
     public void UpdateSlot()
     {
-        if(Inventory.instance.itemList[transform.GetSiblingIndex()] != null)
+        if(CluesInventory.instance.itemList[transform.GetSiblingIndex()] != null)
         {
-            icon.GetComponent<Image>().sprite = Inventory.instance.itemList[transform.GetSiblingIndex()].image;
+            icon.GetComponent<Image>().sprite = CluesInventory.instance.itemList[transform.GetSiblingIndex()].image;
             icon.SetActive(true);
         }
         else

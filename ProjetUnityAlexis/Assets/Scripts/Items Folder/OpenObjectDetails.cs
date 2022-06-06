@@ -14,8 +14,8 @@ public class OpenObjectDetails : MonoBehaviour
     {
         /*inventory.itemNameUI.text = inventory.itemList[inventory.itemCurrentIndex].name;
         inventory.itemDescriptionUI.text = inventory.itemList[inventory.itemCurrentIndex].description;*/
-            Inventory.instance.itemNameUI.text = Inventory.instance.itemList[transform.GetSiblingIndex()].name;
-            Inventory.instance.itemDescriptionUI.text = Inventory.instance.itemList[transform.GetSiblingIndex()].description;
+            CluesInventory.instance.itemNameUI.text = CluesInventory.instance.itemList[transform.GetSiblingIndex()].name;
+            CluesInventory.instance.itemDescriptionUI.text = CluesInventory.instance.itemList[transform.GetSiblingIndex()].description;
             
             if(isHidden)
             {
