@@ -10,7 +10,6 @@ public class OpenSuspectDetails : MonoBehaviour, IPointerEnterHandler, IPointerE
     public GameObject objectDetails;
     bool isHidden = false;
 
-
     public void OnPointerEnter(PointerEventData data)
      {
             SuspectsInventory.instance.itemNameUI.text = SuspectsInventory.instance.suspectList[transform.GetSiblingIndex()].name;

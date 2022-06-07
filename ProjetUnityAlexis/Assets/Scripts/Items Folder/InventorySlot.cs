@@ -9,11 +9,6 @@ public class InventorySlot : MonoBehaviour
     public GameObject icon;
     public Item item;
 
-    private void Start()
-    {
-        item = null;
-    }
-
     public void UpdateItemSlot()
     {
         if(CluesInventory.instance.itemList[transform.GetSiblingIndex()] != null)
@@ -33,7 +28,7 @@ public class InventorySlot : MonoBehaviour
     {
         if(SuspectsInventory.instance.suspectList[transform.GetSiblingIndex()] != null)
         {
-            item = CluesInventory.instance.itemList[transform.GetSiblingIndex()];
+            item = SuspectsInventory.instance.suspectList[transform.GetSiblingIndex()];
             icon.GetComponent<Image>().sprite = SuspectsInventory.instance.suspectList[transform.GetSiblingIndex()].image;
             icon.SetActive(true);
         }
