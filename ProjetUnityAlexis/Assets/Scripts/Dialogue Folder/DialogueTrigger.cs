@@ -26,7 +26,6 @@ public class DialogueTrigger : MonoBehaviour
         {
             GameObject.FindGameObjectWithTag("Canvas").GetComponent<ReadFromCharacter>().dialogueManager = dialogueManager;
             GameObject.FindGameObjectWithTag("Canvas").GetComponent<ReadFromCharacter>().dialogueTrigger = this;
-            Debug.Log("Press E : " + ReadFromCharacter.ChoicesStructures.Count);
             //dialogueManager.dialogueCharA.dialogueStructure[ReadFromCharacter.currentIndex].choicesStructure = ReadFromCharacter.ChoicesStructures;
             TriggerDialogue();
             interactUI.enabled = false;

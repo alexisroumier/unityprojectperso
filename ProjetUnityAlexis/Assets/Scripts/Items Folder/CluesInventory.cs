@@ -48,12 +48,14 @@ public class CluesInventory : MonoBehaviour
             {
                 isHidden = false;
                 cluesInventory.SetActive(isHidden);
+                SuspectsInventory.instance.suspectsInventory.SetActive(value: false);
                 Time.timeScale = 1f;
             }
             else
             {
                 isHidden = true;
                 cluesInventory.SetActive(isHidden);
+                SuspectsInventory.instance.suspectsInventory.SetActive(value: false);
             }
         }
     }
@@ -114,13 +116,17 @@ public class CluesInventory : MonoBehaviour
             {
                 isHidden = false;
                 cluesInventory.SetActive(isHidden);
+                SuspectsInventory.instance.suspectsInventory.SetActive(value: false);
                 Time.timeScale = 1f;
             }
             else
             {
                 isHidden = true;
                 cluesInventory.SetActive(isHidden);
+                SuspectsInventory.instance.suspectsInventory.SetActive(value: false);
             }
     }
+
+
 
 }

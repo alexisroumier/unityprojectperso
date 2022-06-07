@@ -1,0 +1,104 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3638666950072077032
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3638666950072077030}
+  - component: {fileID: 3638666950072077031}
+  - component: {fileID: 3638666950072077029}
+  m_Layer: 0
+  m_Name: InventoryScripts
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3638666950072077030
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3638666950072077032}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 174.50287, y: 109.89192, z: 0.67853266}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3638666950072077031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3638666950072077032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6b4e2fe6ec5ae44e9f43acabc49be60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemList:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  inventorySlots:
+  - {fileID: 8597837223605693965, guid: 45e53b188921c9647ac02cfe53adfd49, type: 3}
+  pickUpText: {fileID: 0}
+  itemCurrentIndex: 0
+  itemImageUI1: {fileID: 0}
+  itemImageUI2: {fileID: 0}
+  itemImageUI3: {fileID: 0}
+  emptyItemImage: {fileID: 21300000, guid: c285c4b19c816cc4fa861ebc741d9aaf, type: 3}
+  itemNameUI: {fileID: 0}
+  itemDescriptionUI: {fileID: 0}
+  cluesInventory: {fileID: 0}
+  itemSlotObject: {fileID: 0}
+  itemSlotObjectTransform: {fileID: 0}
+--- !u!114 &3638666950072077029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3638666950072077032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ff226d9aa09cec45bc26deda1d81af2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  suspectList:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  inventorySlots:
+  - {fileID: 8597837223605693965, guid: 45e53b188921c9647ac02cfe53adfd49, type: 3}
+  itemCurrentIndex: 0
+  itemImageUI: {fileID: 0}
+  emptyItemImage: {fileID: 21300000, guid: c285c4b19c816cc4fa861ebc741d9aaf, type: 3}
+  itemNameUI: {fileID: 0}
+  itemDescriptionUI: {fileID: 0}
+  suspectsInventory: {fileID: 0}
+  itemSlotObject: {fileID: 0}
+  itemSlotObjectTransform: {fileID: 0}
+  newSuspectText: {fileID: 0}

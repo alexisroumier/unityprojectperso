@@ -17,3 +17,4 @@ MonoBehaviour:
   description: "Une boule noire provenant de la chambre de Maman. Qu'est ce que cela
     peut-il \xEAtre ?"
   image: {fileID: 21300000, guid: 2374d728d83c7a947879bdacae2b2770, type: 3}
+  IsSelected: 0
