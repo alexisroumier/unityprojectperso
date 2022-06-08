@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 
 public class InventorySlot : MonoBehaviour
 {
+    public static InventorySlot instance;
     public GameObject icon;
     public Item item;
 
@@ -14,8 +15,9 @@ public class InventorySlot : MonoBehaviour
         if(CluesInventory.instance.itemList[transform.GetSiblingIndex()] != null)
         {
             item = CluesInventory.instance.itemList[transform.GetSiblingIndex()];
-            Debug.Log(CluesInventory.instance.itemList[transform.GetSiblingIndex()].name);
-            icon.GetComponent<Image>().sprite = CluesInventory.instance.itemList[transform.GetSiblingIndex()].image;
+            //ItemBubble.instance.item = CluesInventory.instance.itemList[transform.GetSiblingIndex()];
+            icon.GetComponent<Image>().sprite = item.image;
+            gameObject.name = item.Name;
             icon.SetActive(true);
         }
         else

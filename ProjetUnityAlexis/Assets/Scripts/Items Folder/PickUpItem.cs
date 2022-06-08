@@ -42,7 +42,7 @@ void Start()
     void TakeItem()
     {
         //pnjA.DialogueManager.charDialogue = pnjA.
-        CluesInventory.instance.Add(item);
+        CluesInventory.instance.Add(item: item);
         CluesInventory.instance.UpdateInventoryUI();
         interactUI.enabled = false;
         NewItemText();

@@ -136,6 +136,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 4604372781185327241, guid: 0ad9c8caf724c6c4fabe62078052313e, type: 3}
+        m_TargetAssemblyTypeName: ItemBubble, Assembly-CSharp
+        m_MethodName: SpriteBubble
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8597837223605693967
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,7 +189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 8597837223914385348}
-  item: {fileID: 11400000, guid: f9576d5093da67046a10d733badc13ff, type: 2}
+  item: {fileID: 11400000, guid: ae706af75b0ecc545a3e3bef04aea405, type: 2}
 --- !u!1 &8597837223914385348
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,7 +256,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4e9e61cfcd7100742ad79296159ac6f1, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1

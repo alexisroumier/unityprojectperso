@@ -55,8 +55,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  inventorySlots:
-  - {fileID: 8597837223605693965, guid: 45e53b188921c9647ac02cfe53adfd49, type: 3}
+  inventorySlots: []
   pickUpText: {fileID: 0}
   itemCurrentIndex: 0
   itemImageUI1: {fileID: 0}
@@ -91,8 +90,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  inventorySlots:
-  - {fileID: 8597837223605693965, guid: 45e53b188921c9647ac02cfe53adfd49, type: 3}
+  inventorySlots: []
   itemCurrentIndex: 0
   itemImageUI: {fileID: 0}
   emptyItemImage: {fileID: 21300000, guid: c285c4b19c816cc4fa861ebc741d9aaf, type: 3}

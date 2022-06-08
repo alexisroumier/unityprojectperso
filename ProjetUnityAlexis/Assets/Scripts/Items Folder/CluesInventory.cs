@@ -35,7 +35,7 @@ public class CluesInventory : MonoBehaviour
 
     private void Start()
     {
-        UpdateInventoryUI();
+        //UpdateInventoryUI();
     }
 
     void Update()
@@ -88,10 +88,10 @@ public class CluesInventory : MonoBehaviour
             itemImageUI2.sprite = content[contentCurrentIndex + 1].image;
         }
         */
-        
+
         if(itemList[itemCurrentIndex] != null)
         {
-            itemImageUI1.sprite = itemList[itemCurrentIndex].image;
+            //itemImageUI1.sprite = itemList[itemCurrentIndex].image;
         }
         else
         {
@@ -126,6 +126,7 @@ public class CluesInventory : MonoBehaviour
                 SuspectsInventory.instance.suspectsInventory.SetActive(value: false);
             }
     }
+
 
 
 
