@@ -19,6 +19,11 @@ public class PickUpItem : MonoBehaviour
     [SerializeField] private GameObject myObject;
     [SerializeField] private PickUpItem myScript;
 
+    private void Awake()
+    {
+        instance = this;   
+    }
+
 void Start()
 {
     pickUpText.enabled = false;

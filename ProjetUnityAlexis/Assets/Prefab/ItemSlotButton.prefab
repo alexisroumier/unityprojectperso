@@ -93,8 +93,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: -1
-    m_WrapAround: 0
+    m_Mode: 3
+    m_WrapAround: 1
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -103,8 +103,8 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.7349235, g: 0.8470185, b: 0.9811321, a: 1}
-    m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
-    m_SelectedColor: {r: 0.4745098, g: 0.6901961, b: 0.9529412, a: 1}
+    m_PressedColor: {r: 0.62352943, g: 0, b: 0.31483188, a: 1}
+    m_SelectedColor: {r: 0, g: 0.40403676, b: 0.8962264, a: 1}
     m_DisabledColor: {r: 0, g: 0, b: 0, a: 0.77254903}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c201b2253736e24d9db1533e190fc69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectDetails: {fileID: 8597837223605693954}
+  objectDetails: {fileID: 7779566024558967468, guid: d74102ae11544ed46bbc2f8fe521bdd9, type: 3}
 --- !u!114 &8597837223605693964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,7 +189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 8597837223914385348}
-  item: {fileID: 11400000, guid: ae706af75b0ecc545a3e3bef04aea405, type: 2}
+  item: {fileID: 0}
 --- !u!1 &8597837223914385348
 GameObject:
   m_ObjectHideFlags: 0

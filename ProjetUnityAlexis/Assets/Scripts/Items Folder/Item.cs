@@ -9,4 +9,9 @@ public class Item : ScriptableObject
     public Sprite image;
     public bool IsSelected = false;
 
+    public void Start()
+    {
+        IsSelected = false;
+    }
+
 }

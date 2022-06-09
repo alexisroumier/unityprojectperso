@@ -111,14 +111,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 4604372781185327243}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98a6f3a3aacc1ca4dabc5eb24ca93a99, type: 3}
+  m_Script: {fileID: 11500000, guid: 0a9b298b257d999479359228070b5dc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToFollow: {fileID: 0}
   spriteBubble: {fileID: 4604372782127191987}
   sizeBubble: {fileID: 4604372781528672519}
   Bubble: {fileID: 4604372781185327243}
-  x: 20
+  x: 22
   y: 45
   z: 0
 --- !u!1 &4604372781528672519
@@ -260,7 +259,7 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 2
+  m_DrawMode: 1
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0

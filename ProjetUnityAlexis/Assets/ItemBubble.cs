@@ -5,9 +5,7 @@ using UnityEngine.UI;
 
 public class ItemBubble : MonoBehaviour
 {
-    Camera cam;
-    public Transform objectToFollow;
-
+    public static ItemBubble instance;
     public GameObject spriteBubble;
     public GameObject sizeBubble;
     public GameObject Bubble;
@@ -16,9 +14,15 @@ public class ItemBubble : MonoBehaviour
     public float y;
     public float z;
 
+    private void Awake()
+    {
+        instance = this;   
+    }
+
     void Start()
     {
         transform.rotation = Quaternion.Euler(x,y,z);
+        spriteBubble.GetComponent<SpriteRenderer>().size = new Vector2(1,1);
     }
 
     void Update()
@@ -27,18 +31,35 @@ public class ItemBubble : MonoBehaviour
         spriteBubble.GetComponent<SpriteRenderer>().size = new Vector2(1,1);
     }
 
+    void LateUpdate()
+    {
+                spriteBubble.GetComponent<SpriteRenderer>().size = new Vector2(1,1);
+
+    }
+
     public void SpriteBubble()
     {
+
         spriteBubble.GetComponent<SpriteRenderer>().size = new Vector2(1,1);
+
         if(CluesInventory.instance.itemList[transform.GetSiblingIndex()] != null)
         {
+            Debug.Log(CluesInventory.instance.itemList[transform.GetSiblingIndex()]);
+            if(!Bubble.activeSelf)
+            {
             Bubble.SetActive(true);
             spriteBubble.GetComponent<SpriteRenderer>().sprite = CluesInventory.instance.itemList[transform.GetSiblingIndex()].image;
-            //spriteBubble.transform.localScale = sizeBubble.transform.localScale;
+            }
+            else
+            {
+            Debug.Log(CluesInventory.instance.itemList[transform.GetSiblingIndex()] + "bulle désactivée");
+            Bubble.SetActive(false);
+            spriteBubble.GetComponent<SpriteRenderer>().sprite = null;
+            }
         }
         else
         {
-            Bubble.SetActive(false);
+            Bubble.SetActive(value: false);
             spriteBubble.GetComponent<SpriteRenderer>().sprite = null;
         }
     }

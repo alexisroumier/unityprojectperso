@@ -23,6 +23,11 @@ public class OpenItemDetails : MonoBehaviour, IPointerEnterHandler, IPointerExit
      {
             isHidden = false;
             objectDetails.SetActive(isHidden);
+            if(Input.GetMouseButtonUp(0) && InventorySlot.instance.item.IsSelected)
+            {
+            InventorySlot.instance.item.IsSelected = false;
+            Debug.Log("On clique ailleurs. " + InventorySlot.instance.item.name + " est déselectionné : " + InventorySlot.instance.item.IsSelected);
+            }
     } 
 
 }

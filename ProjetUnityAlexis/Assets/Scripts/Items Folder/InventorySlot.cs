@@ -10,12 +10,16 @@ public class InventorySlot : MonoBehaviour
     public GameObject icon;
     public Item item;
 
+    private void Awake()
+    {
+        instance = this;   
+    }
+
     public void UpdateItemSlot()
     {
         if(CluesInventory.instance.itemList[transform.GetSiblingIndex()] != null)
         {
             item = CluesInventory.instance.itemList[transform.GetSiblingIndex()];
-            //ItemBubble.instance.item = CluesInventory.instance.itemList[transform.GetSiblingIndex()];
             icon.GetComponent<Image>().sprite = item.image;
             gameObject.name = item.Name;
             icon.SetActive(true);
@@ -42,9 +46,17 @@ public class InventorySlot : MonoBehaviour
     
 
     public void SelectItem()
-    {   
+    {               
+        if(item.IsSelected == false)
+        {
             item.IsSelected = true;
             Debug.Log(item.name + " est selectionné : " + item.IsSelected);
+        }
+        else
+        {
+            item.IsSelected = false;
+            Debug.Log(item.name + " est selectionné : " + item.IsSelected);
+        }
     }
 
 

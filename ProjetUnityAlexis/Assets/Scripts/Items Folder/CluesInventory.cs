@@ -12,8 +12,6 @@ public class CluesInventory : MonoBehaviour
     public Text pickUpText;
     public int itemCurrentIndex = 0;
     public Image itemImageUI1;
-    public Image itemImageUI2;
-    public Image itemImageUI3;
     public Sprite emptyItemImage;
     public Text itemNameUI;
     public Text itemDescriptionUI;
