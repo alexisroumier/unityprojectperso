@@ -44,7 +44,6 @@ public class ItemBubble : MonoBehaviour
 
         if(CluesInventory.instance.itemList[transform.GetSiblingIndex()] != null)
         {
-            Debug.Log(CluesInventory.instance.itemList[transform.GetSiblingIndex()]);
             if(!Bubble.activeSelf)
             {
             Bubble.SetActive(true);
@@ -52,7 +51,6 @@ public class ItemBubble : MonoBehaviour
             }
             else
             {
-            Debug.Log(CluesInventory.instance.itemList[transform.GetSiblingIndex()] + "bulle désactivée");
             Bubble.SetActive(value: false);
             spriteBubble.GetComponent<SpriteRenderer>().sprite = null;
             }

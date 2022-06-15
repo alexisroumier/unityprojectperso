@@ -19,6 +19,9 @@ public class InventorySlot : MonoBehaviour
 
     public void UpdateItemSlot()
     {
+        Debug.Log("CluesInventory.instance.itemList[transform.GetSiblingIndex()]");
+        Debug.Log("cest lui aui nous interesse" + CluesInventory.instance.inventorySlots.IndexOf(this));
+        Debug.Log("CluesInventory.instance.itemList" + CluesInventory.instance.itemList);
         if(CluesInventory.instance.itemList[transform.GetSiblingIndex()] != null)
         {
             item = CluesInventory.instance.itemList[transform.GetSiblingIndex()];

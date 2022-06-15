@@ -78,9 +78,12 @@ public class CluesInventory : MonoBehaviour
         AddItemSlots();
         for(int i = 0; i < itemList.Length; i++)
         {
+            Debug.Log("item" + item);
             if(itemList[i] == null)
             {
                 itemList[i] = item;
+                Debug.Log("itemList" + itemList[0]);
+                Debug.Log("i" + i);
                 return true;
             }
         }
@@ -90,11 +93,12 @@ public class CluesInventory : MonoBehaviour
 
     public void UpdateInventoryUI()
     {
+        Debug.Log("inventorySlots.count" + inventorySlots.Count);
         for(int i = 0; i < inventorySlots.Count; i++)
         {
             inventorySlots[i].UpdateItemSlot();
         }
-
+        Debug.Log("itemCurrentIndex" + itemCurrentIndex);
         if(itemList[itemCurrentIndex] != null) //a supprimer bientôt
         {
             //itemImageUI1.sprite = itemList[itemCurrentIndex].image;

@@ -8,6 +8,7 @@ public class PickUpItem : MonoBehaviour
 
     public Text interactUI;
     private bool isInRange;
+    public bool isPickable;
     public Text pickUpText;
     public Item item;
     public AudioClip soundToPlay;
@@ -32,7 +33,7 @@ void Start()
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.E) && isInRange)
+        if(Input.GetKeyDown(KeyCode.E) && isInRange && isPickable == true)
         {
             TakeItem();
 
