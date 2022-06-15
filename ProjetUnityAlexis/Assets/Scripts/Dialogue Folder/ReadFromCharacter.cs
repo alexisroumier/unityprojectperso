@@ -27,7 +27,8 @@ public class ReadFromCharacter : MonoBehaviour
     public bool isTalking;
     public static ReadFromCharacter instance;
     public PlayerCC PlayerCC;
-    public Animator animator;
+    public Animator dialogueAnimator;
+    public Animator fondNoirAnimator;
     public Text newSuspectText;
     public AudioClip soundToPlay;
 
@@ -71,7 +72,8 @@ public class ReadFromCharacter : MonoBehaviour
         PlayerCC._speed = 0;
         charImage.SetActive(false);
         panelDialogue.SetActive(true);
-        animator.SetBool("isOpen", true);
+        fondNoirAnimator.SetBool("isOpen", true);
+        dialogueAnimator.SetBool("isOpen", true);
         nameText.text = dialogueManager.charDialogue.dialogueStructure[currentIndex].nameNPC;
         charImage = dialogueManager.charDialogue.dialogueStructure[currentIndex].imageNPC;
         charImage.SetActive(true);
@@ -176,13 +178,29 @@ public class ReadFromCharacter : MonoBehaviour
 
     public void EndDialogue()
     {
-        animator.SetBool("isOpen", false);
+        fondNoirAnimator.SetBool("isOpen", false);
+        dialogueAnimator.SetBool("isOpen", false);
         charImage.SetActive(false);
         isTalking = false;
         dialogueManager = null;
         dialogueTrigger = null;
         currentIndex = 0;
         PlayerCC._speed = 5;
+
+        if(ItemBubble.instance.Bubble) //désactiver l'objet selectionné dans l'inventaire
+        {
+            ItemBubble.instance.Bubble.SetActive(false);
+            for(int i = 0; i < CluesInventory.instance.itemList.Length; i++)
+            {
+                if(CluesInventory.instance.itemList[i] != null)
+                CluesInventory.instance.itemList[i].IsSelected = false;
+            }
+            for(int i = 0; i < SuspectsInventory.instance.suspectList.Length; i++)
+            {
+                if(CluesInventory.instance.itemList[i] != null)
+                SuspectsInventory.instance.suspectList[i].IsSelected = false;
+            }
+        }
     }
 
 

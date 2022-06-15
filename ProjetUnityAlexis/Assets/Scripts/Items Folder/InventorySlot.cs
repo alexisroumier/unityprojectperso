@@ -10,6 +10,8 @@ public class InventorySlot : MonoBehaviour
     public GameObject icon;
     public Item item;
 
+    private int slotNumber = 0;
+
     private void Awake()
     {
         instance = this;   
@@ -21,7 +23,12 @@ public class InventorySlot : MonoBehaviour
         {
             item = CluesInventory.instance.itemList[transform.GetSiblingIndex()];
             icon.GetComponent<Image>().sprite = item.image;
-            gameObject.name = item.Name;
+            gameObject.name = item.Name + "slot numéro 1";
+            foreach (var item in CluesInventory.instance.itemList)
+            if(CluesInventory.instance.itemList.Length == 0)
+            {
+            gameObject.name = item.Name + "slot numéro 1";
+            }
             icon.SetActive(true);
         }
         else

@@ -33,7 +33,7 @@ public class CluesInventory : MonoBehaviour
 
     private void Start()
     {
-        //UpdateInventoryUI();
+        UpdateInventoryUI();
     }
 
     void Update()
@@ -54,6 +54,20 @@ public class CluesInventory : MonoBehaviour
                 isHidden = true;
                 cluesInventory.SetActive(isHidden);
                 SuspectsInventory.instance.suspectsInventory.SetActive(value: false);
+            }
+        }
+        if(itemList.Length >=0 && Input.GetKeyDown(KeyCode.M))
+        {
+            for(int i = 0; i < itemList.Length; i++)
+            { 
+                if(itemList[i].IsSelected == true) 
+                {
+                    Debug.Log("selectionné : " + i);
+                }
+                else
+                {
+                    Debug.Log("pas selectionné : " + i);
+                }
             }
         }
     }
@@ -80,14 +94,8 @@ public class CluesInventory : MonoBehaviour
         {
             inventorySlots[i].UpdateItemSlot();
         }
-        
-        /*if(itemImageUI1.sprite != content[contentCurrentIndex].image)
-        {
-            itemImageUI2.sprite = content[contentCurrentIndex + 1].image;
-        }
-        */
 
-        if(itemList[itemCurrentIndex] != null)
+        if(itemList[itemCurrentIndex] != null) //a supprimer bientôt
         {
             //itemImageUI1.sprite = itemList[itemCurrentIndex].image;
         }

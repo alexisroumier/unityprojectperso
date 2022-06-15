@@ -7,7 +7,7 @@ public class SuspectsInventory : MonoBehaviour
 {
 
     public Item[] suspectList = new Item[10];
-    public List<InventorySlot> inventorySlots = new List<InventorySlot>();
+    public List<InventorySlot> suspectInventorySlots = new List<InventorySlot>();
     public static SuspectsInventory instance;
     public int itemCurrentIndex = 0;
     public Image itemImageUI;
@@ -76,9 +76,9 @@ public class SuspectsInventory : MonoBehaviour
 
     public void UpdateInventoryUI()
     {
-        for(int i = 0; i < inventorySlots.Count; i++)
+        for(int i = 0; i < suspectInventorySlots.Count; i++)
         {
-            inventorySlots[i].UpdateSuspectSlot();
+            suspectInventorySlots[i].UpdateSuspectSlot();
         }
         
         if(suspectList[itemCurrentIndex] != null)
@@ -96,8 +96,8 @@ public class SuspectsInventory : MonoBehaviour
     private void AddItemSlots()
     {
         GameObject GO = Instantiate(itemSlotObject, itemSlotObjectTransform);
-        InventorySlot newSlot = GO.GetComponent<InventorySlot>();
-        inventorySlots.Add(newSlot);
+        InventorySlot newSuspectSlot = GO.GetComponent<InventorySlot>();
+        suspectInventorySlots.Add(newSuspectSlot);
     }
 
 
