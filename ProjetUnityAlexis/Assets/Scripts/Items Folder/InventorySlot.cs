@@ -22,9 +22,10 @@ public class InventorySlot : MonoBehaviour
         Debug.Log("CluesInventory.instance.itemList[transform.GetSiblingIndex()]");
         Debug.Log("cest lui aui nous interesse" + CluesInventory.instance.inventorySlots.IndexOf(this));
         Debug.Log("CluesInventory.instance.itemList" + CluesInventory.instance.itemList);
-        if(CluesInventory.instance.itemList[transform.GetSiblingIndex()] != null)
+        int index = CluesInventory.instance.inventorySlots.IndexOf(this);
+        if(CluesInventory.instance.itemList[index] != null)
         {
-            item = CluesInventory.instance.itemList[transform.GetSiblingIndex()];
+            item = CluesInventory.instance.itemList[index];
             icon.GetComponent<Image>().sprite = item.image;
             gameObject.name = item.Name + "slot numéro 1";
             foreach (var item in CluesInventory.instance.itemList)
