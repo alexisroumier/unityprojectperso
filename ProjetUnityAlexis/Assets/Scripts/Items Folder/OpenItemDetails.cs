@@ -13,6 +13,7 @@ public class OpenItemDetails : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     public void OnPointerEnter(PointerEventData data)
      {
+        objectDetails = CluesInventory.instance.objectsToActivate[0];
             if(CluesInventory.instance.itemList[transform.GetSiblingIndex()] != null)
             {
             CluesInventory.instance.itemNameUI.text = CluesInventory.instance.itemList[transform.GetSiblingIndex()].Name;

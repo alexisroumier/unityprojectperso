@@ -190,7 +190,7 @@ public class ReadFromCharacter : MonoBehaviour
         if(ItemBubble.instance.Bubble) //désactiver l'objet selectionné dans l'inventaire
         {
             ItemBubble.instance.Bubble.SetActive(false);
-            for(int i = 0; i < CluesInventory.instance.itemList.Length; i++)
+            for(int i = 0; i < CluesInventory.instance.itemList.Count; i++)
             {
                 if(CluesInventory.instance.itemList[i] != null)
                 CluesInventory.instance.itemList[i].IsSelected = false;

@@ -10,8 +10,6 @@ public class InventorySlot : MonoBehaviour
     public GameObject icon;
     public Item item;
 
-    private int slotNumber = 0;
-
     private void Awake()
     {
         instance = this;   
@@ -19,9 +17,6 @@ public class InventorySlot : MonoBehaviour
 
     public void UpdateItemSlot()
     {
-        Debug.Log("CluesInventory.instance.itemList[transform.GetSiblingIndex()]");
-        Debug.Log("cest lui aui nous interesse" + CluesInventory.instance.inventorySlots.IndexOf(this));
-        Debug.Log("CluesInventory.instance.itemList" + CluesInventory.instance.itemList);
         int index = CluesInventory.instance.inventorySlots.IndexOf(this);
         if(CluesInventory.instance.itemList[index] != null)
         {
@@ -29,7 +24,7 @@ public class InventorySlot : MonoBehaviour
             icon.GetComponent<Image>().sprite = item.image;
             gameObject.name = item.Name + "slot numéro 1";
             foreach (var item in CluesInventory.instance.itemList)
-            if(CluesInventory.instance.itemList.Length == 0)
+            if(CluesInventory.instance.itemList.Count == 0)
             {
             gameObject.name = item.Name + "slot numéro 1";
             }

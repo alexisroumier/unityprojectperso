@@ -6,12 +6,13 @@ using UnityEngine.UI;
 public class CluesInventory : MonoBehaviour
 {
 
-    public Item[] itemList = new Item[10];
+    public List<Item> itemList = new List<Item>();
     public List<InventorySlot> inventorySlots = new List<InventorySlot>();
+    public List<GameObject> objectsToActivate = new List<GameObject>();
+
     public static CluesInventory instance;
     public Text pickUpText;
     public int itemCurrentIndex = 0;
-    public Image itemImageUI1;
     public Sprite emptyItemImage;
     public Text itemNameUI;
     public Text itemDescriptionUI;
@@ -56,9 +57,9 @@ public class CluesInventory : MonoBehaviour
                 SuspectsInventory.instance.suspectsInventory.SetActive(value: false);
             }
         }
-        if(itemList.Length >=0 && Input.GetKeyDown(KeyCode.M))
+        if(itemList.Count >=0 && Input.GetKeyDown(KeyCode.M))
         {
-            for(int i = 0; i < itemList.Length; i++)
+            for(int i = 0; i < itemList.Count; i++)
             { 
                 if(itemList[i].IsSelected == true) 
                 {
@@ -75,15 +76,13 @@ public class CluesInventory : MonoBehaviour
     
     public bool Add(Item item)
     {
+        itemList.Add(item);
         AddItemSlots();
-        for(int i = 0; i < itemList.Length; i++)
+        for(int i = 0; i < itemList.Count; i++)
         {
-            Debug.Log("item" + item);
             if(itemList[i] == null)
             {
                 itemList[i] = item;
-                Debug.Log("itemList" + itemList[0]);
-                Debug.Log("i" + i);
                 return true;
             }
         }
@@ -99,16 +98,16 @@ public class CluesInventory : MonoBehaviour
             inventorySlots[i].UpdateItemSlot();
         }
         Debug.Log("itemCurrentIndex" + itemCurrentIndex);
-        if(itemList[itemCurrentIndex] != null) //a supprimer bientôt
+/*        if(itemList != null) //a supprimer bientôt
         {
             //itemImageUI1.sprite = itemList[itemCurrentIndex].image;
         }
         else
         {
-            itemImageUI1.sprite = emptyItemImage;
+            //itemImageUI1.sprite = emptyItemImage;
             itemNameUI.text = "";
             itemDescriptionUI.text = "";
-        }
+        } */
     }
 
     private void AddItemSlots()

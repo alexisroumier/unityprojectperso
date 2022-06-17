@@ -5,6 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
     public List<GameObject> charManager;
     public GameObject CurrentScene;
     // Inventaire

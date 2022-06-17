@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
+
 
 public class ItemBubble : MonoBehaviour
 {
@@ -34,20 +36,18 @@ public class ItemBubble : MonoBehaviour
     void LateUpdate()
     {
                 spriteBubble.GetComponent<SpriteRenderer>().size = new Vector2(1,1);
-
     }
 
     public void SpriteBubble()
     {
-
         spriteBubble.GetComponent<SpriteRenderer>().size = new Vector2(1,1);
-
-        if(CluesInventory.instance.itemList[transform.GetSiblingIndex()] != null)
-        {
+        Bubble = CluesInventory.instance.objectsToActivate[1];
+        if(InventorySlot.instance.item != null)
+         {
             if(!Bubble.activeSelf)
             {
             Bubble.SetActive(true);
-            spriteBubble.GetComponent<SpriteRenderer>().sprite = CluesInventory.instance.itemList[transform.GetSiblingIndex()].image;
+            spriteBubble.GetComponent<SpriteRenderer>().sprite = InventorySlot.instance.item.image;
             }
             else
             {

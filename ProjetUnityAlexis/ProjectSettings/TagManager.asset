@@ -11,6 +11,7 @@ TagManager:
   - Character
   - sceneevents
   - Canvas
+  - itempanel
   layers:
   - Default
   - TransparentFX

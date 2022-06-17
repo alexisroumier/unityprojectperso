@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,7 @@ public class SceneEvents : MonoBehaviour
 {
 
     public UnityEvent EventPNJA;
+    public static event Action ExempleEvent;
     
     public bool itemOne;
     public bool itemTwo;
@@ -21,11 +23,16 @@ public class SceneEvents : MonoBehaviour
 
     public void Update() {
         EventPNJA.Invoke();
+        if(Input.GetKeyDown(KeyCode.Tab))
+        {
+            ExempleEvent?.Invoke();
+        }
+
     }
 
     // Activer OnPropertyChanged from Current Scene Event
 
-    private void CurrentSceneUpdateEvent()
+    public void CurrentSceneUpdateEvent()
     {
         // Si itemone est recupere / activer dans le monde faire les actions
         if (itemOne)
@@ -47,5 +54,4 @@ public class SceneEvents : MonoBehaviour
             //liste actions itemone && itemtwo.
         }
     }
-
 }
