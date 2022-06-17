@@ -49,21 +49,5 @@ public class InventorySlot : MonoBehaviour
             icon.SetActive(false);
         }
     }
-    
-
-    public void SelectItem()
-    {               
-        if(item.IsSelected == false)
-        {
-            item.IsSelected = true;
-            Debug.Log(item.name + " est selectionné : " + item.IsSelected);
-        }
-        else
-        {
-            item.IsSelected = false;
-            Debug.Log(item.name + " est selectionné : " + item.IsSelected);
-        }
-    }
-
 
 }

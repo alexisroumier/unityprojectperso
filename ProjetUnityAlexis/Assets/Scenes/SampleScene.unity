@@ -5224,6 +5224,10 @@ PrefabInstance:
       propertyPath: Bubble
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4604372781185327241, guid: 0ad9c8caf724c6c4fabe62078052313e, type: 3}
+      propertyPath: selectedItem
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4604372781185327243, guid: 0ad9c8caf724c6c4fabe62078052313e, type: 3}
       propertyPath: m_Name
       value: Bubble
@@ -5233,8 +5237,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4604372782127191985, guid: 0ad9c8caf724c6c4fabe62078052313e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4604372782127191985, guid: 0ad9c8caf724c6c4fabe62078052313e, type: 3}
       propertyPath: m_DrawMode
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4604372782127191985, guid: 0ad9c8caf724c6c4fabe62078052313e, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5751743022540415074, guid: 0ad9c8caf724c6c4fabe62078052313e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -10248,6 +10260,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1645874833}
   m_CullTransparentMesh: 1
+--- !u!1 &1658740289 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4604372782127191987, guid: 0ad9c8caf724c6c4fabe62078052313e, type: 3}
+  m_PrefabInstance: {fileID: 577842348}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1666648818
 GameObject:
   m_ObjectHideFlags: 0
@@ -14217,7 +14234,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3638666950072077031, guid: 19e0fae00887c354092783bc26be2f3f, type: 3}
       propertyPath: objectsToActivate.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3638666950072077031, guid: 19e0fae00887c354092783bc26be2f3f, type: 3}
       propertyPath: objectsToActivate.Array.data[0]
@@ -14227,6 +14244,10 @@ PrefabInstance:
       propertyPath: objectsToActivate.Array.data[1]
       value: 
       objectReference: {fileID: 1812170843}
+    - target: {fileID: 3638666950072077031, guid: 19e0fae00887c354092783bc26be2f3f, type: 3}
+      propertyPath: objectsToActivate.Array.data[2]
+      value: 
+      objectReference: {fileID: 1658740289}
     - target: {fileID: 3638666950072077032, guid: 19e0fae00887c354092783bc26be2f3f, type: 3}
       propertyPath: m_Name
       value: InventoryScripts

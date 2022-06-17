@@ -11,6 +11,8 @@ public class ItemBubble : MonoBehaviour
     public GameObject spriteBubble;
     public GameObject sizeBubble;
     public GameObject Bubble;
+    public GameObject currentSelectedGO;
+    public Item bubbleItem;
 
     public float x;
     public float y;
@@ -18,7 +20,9 @@ public class ItemBubble : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;   
+        instance = this;
+        Bubble = CluesInventory.instance.objectsToActivate[1];
+        spriteBubble = CluesInventory.instance.objectsToActivate[2];
     }
 
     void Start()
@@ -41,24 +45,52 @@ public class ItemBubble : MonoBehaviour
     public void SpriteBubble()
     {
         spriteBubble.GetComponent<SpriteRenderer>().size = new Vector2(1,1);
-        Bubble = CluesInventory.instance.objectsToActivate[1];
-        if(InventorySlot.instance.item != null)
-         {
+        bubbleItem = EventSystem.current.currentSelectedGameObject.GetComponent<InventorySlot>().item;
+        if(bubbleItem != null)
+        {
             if(!Bubble.activeSelf)
             {
-            Bubble.SetActive(true);
-            spriteBubble.GetComponent<SpriteRenderer>().sprite = InventorySlot.instance.item.image;
+                bubbleItem.IsSelected = true;
+                Debug.Log(bubbleItem.name + " = " + bubbleItem.IsSelected);
+                Bubble.SetActive(true);
+                spriteBubble.GetComponent<SpriteRenderer>().sprite = bubbleItem.image;
             }
             else
             {
-            Bubble.SetActive(value: false);
-            spriteBubble.GetComponent<SpriteRenderer>().sprite = null;
+                if(Bubble.activeSelf && bubbleItem.IsSelected == true)
+                {
+                    bubbleItem.IsSelected = false;
+                    Debug.Log(bubbleItem.name + " = " + bubbleItem.IsSelected);
+                    Bubble.SetActive(value: false);
+                    spriteBubble.GetComponent<SpriteRenderer>().sprite = null;
+                }
+
+                if(Bubble.activeSelf && bubbleItem.IsSelected == false)
+                {
+                    spriteBubble.GetComponent<SpriteRenderer>().sprite = bubbleItem.image;
+                    bubbleItem.IsSelected = true;
+                    Debug.Log(bubbleItem.name + " = " + bubbleItem.IsSelected);
+                }
             }
         }
         else
         {
             Bubble.SetActive(value: false);
             spriteBubble.GetComponent<SpriteRenderer>().sprite = null;
+        }
+    }
+
+    public void SelectItem()
+    {     
+        if(bubbleItem.IsSelected == false)
+        {
+            bubbleItem.IsSelected = true;
+            Debug.Log(bubbleItem.name + " est selectionné : " + bubbleItem.IsSelected);
+        }
+        else
+        {
+            bubbleItem.IsSelected = false;
+            Debug.Log(bubbleItem.name + " est selectionné : " + bubbleItem.IsSelected);
         }
     }
 

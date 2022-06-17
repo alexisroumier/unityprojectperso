@@ -114,9 +114,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a9b298b257d999479359228070b5dc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteBubble: {fileID: 4604372782127191987}
+  spriteBubble: {fileID: 0}
   sizeBubble: {fileID: 4604372781528672519}
   Bubble: {fileID: 0}
+  currentSelectedGO: {fileID: 0}
   x: 22
   y: 45
   z: 0
@@ -255,7 +256,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300016, guid: 803baf1ea73913f46b25e07d0a79df22, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -263,6 +264,6 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
