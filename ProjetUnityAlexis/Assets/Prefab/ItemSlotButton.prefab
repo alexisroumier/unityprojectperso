@@ -126,7 +126,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 4604372781185327241, guid: 0ad9c8caf724c6c4fabe62078052313e, type: 3}
         m_TargetAssemblyTypeName: ItemBubble, Assembly-CSharp
-        m_MethodName: SpriteBubble
+        m_MethodName: onInventoryItemClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

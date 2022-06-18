@@ -43,9 +43,10 @@ public class ItemBubble : MonoBehaviour
         if(spriteBubble)spriteBubble.GetComponent<SpriteRenderer>().size = new Vector2(1,1);
     }
 
-    public void SpriteBubble()
+    public void onInventoryItemClick()
     {
-        bubbleItem = EventSystem.current.currentSelectedGameObject.GetComponent<InventorySlot>().item;
+        Item newBubbleItem = EventSystem.current.currentSelectedGameObject.GetComponent<InventorySlot>().item;
+        Debug.Log("bubbleItem before all" + bubbleItem + bubbleItem.IsSelected);
         spriteBubble = CluesInventory.instance.objectsToActivate[2];
         Bubble = CluesInventory.instance.objectsToActivate[1];
         spriteBubble.GetComponent<SpriteRenderer>().size = new Vector2(1,1);
@@ -56,27 +57,26 @@ public class ItemBubble : MonoBehaviour
                 bubbleItem.IsSelected = true;
                 Debug.Log(bubbleItem.name + " = " + bubbleItem.IsSelected);
                 Bubble.SetActive(true);
-                Debug.Log(bubbleItem.image);
-                spriteBubble.GetComponent<SpriteRenderer>().sprite = bubbleItem.image;
+                spriteBubble.GetComponent<SpriteRenderer>().sprite = newBubbleItem.image;
+                bubbleItem = newBubbleItem;
             }
             else
             {
-                Debug.Log("in else");
-                if(Bubble.activeSelf)
+                Debug.Log("buubleItem" + bubbleItem + bubbleItem.IsSelected);
+                if(newBubbleItem.id == bubbleItem.id)
                 {
                     bubbleItem.IsSelected = false;
                     Debug.Log(bubbleItem.name + " = " + bubbleItem.IsSelected);
                     Bubble.SetActive(value: false);
                     spriteBubble.GetComponent<SpriteRenderer>().sprite = null;
                 }
-/*
-                if(Bubble.activeSelf && bubbleItem.IsSelected == false)
+                else
                 {
-                    spriteBubble.GetComponent<SpriteRenderer>().sprite = bubbleItem.image;
+                    spriteBubble.GetComponent<SpriteRenderer>().sprite = newBubbleItem.image;
                     bubbleItem.IsSelected = true;
+                    bubbleItem = newBubbleItem;
                     Debug.Log(bubbleItem.name + " = " + bubbleItem.IsSelected);
                 }
-*/
             }
         }
         else

@@ -8,10 +8,4 @@ public class Item : ScriptableObject
     public string description;
     public Sprite image;
     public bool IsSelected = false;
-
-    public void Start()
-    {
-        IsSelected = false;
-    }
-
 }
