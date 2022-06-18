@@ -5228,6 +5228,10 @@ PrefabInstance:
       propertyPath: selectedItem
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4604372781185327241, guid: 0ad9c8caf724c6c4fabe62078052313e, type: 3}
+      propertyPath: spriteBubble
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4604372781185327243, guid: 0ad9c8caf724c6c4fabe62078052313e, type: 3}
       propertyPath: m_Name
       value: Bubble
