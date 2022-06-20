@@ -67,23 +67,9 @@ public class ItemBubble : MonoBehaviour
             {
                 spriteBubble.GetComponent<SpriteRenderer>().sprite = newBubbleItem.image;
                 bubbleItem = newBubbleItem;
-                Debug.Log(bubbleItem.name + " = " + bubbleItem.IsSelected);
             }
         }
     }
 
-    public void SelectItem()
-    {     
-        if(bubbleItem.IsSelected == false)
-        {
-            bubbleItem.IsSelected = true;
-            Debug.Log(bubbleItem.name + " est selectionné : " + bubbleItem.IsSelected);
-        }
-        else
-        {
-            bubbleItem.IsSelected = false;
-            Debug.Log(bubbleItem.name + " est selectionné : " + bubbleItem.IsSelected);
-        }
-    }
 
 }

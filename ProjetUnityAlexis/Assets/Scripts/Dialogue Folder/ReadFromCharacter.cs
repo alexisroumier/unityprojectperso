@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class ReadFromCharacter : MonoBehaviour
 {
@@ -56,7 +57,7 @@ public class ReadFromCharacter : MonoBehaviour
         {
             ChoicesStructures = dialogueManager.charDialogue.dialogueStructure[currentIndex].choicesStructure;
         }
-        if(isTalking && Input.GetKeyDown(KeyCode.Space) && sentences.Count > 0)
+        if(isTalking && Input.GetKeyDown(KeyCode.E) && sentences.Count > 0)
         {
             //ChoicesStructures = dialogueManager.dialogueCharA.dialogueStructure[currentIndex].choicesStructure;
             TakeSuspect();
@@ -70,6 +71,10 @@ public class ReadFromCharacter : MonoBehaviour
     public void StartDialogue()
     {
         PlayerCC._speed = 0;
+        PlayerCC._turnSpeed = 0;
+        CluesInventory.instance.CloseCluesInventory();
+        //.DisableDevice(Keyboard.G);
+        SuspectsInventory.instance.suspectsInventory.SetActive(false);
         charImage.SetActive(false);
         panelDialogue.SetActive(true);
         fondNoirAnimator.SetBool("isOpen", true);
@@ -92,7 +97,7 @@ public class ReadFromCharacter : MonoBehaviour
 
     public void DisplayNextSentence()
     {
-
+        EventSystem.current.SetSelectedGameObject(null);
         string sentence = sentences.Dequeue();
         Continue.SetActive(false);
         endDialogueButton.SetActive(false);
@@ -118,7 +123,8 @@ public class ReadFromCharacter : MonoBehaviour
         if(sentences.Count == 0 && ChoicesStructures.Count == 0)       
         {
             endDialogueButton.SetActive(true);
-            if(Input.GetKeyDown(KeyCode.Space))
+            EventSystem.current.SetSelectedGameObject(endDialogueButton);
+            if(Input.GetKeyDown(KeyCode.E))
             {
             EndDialogue();
             }
@@ -131,6 +137,7 @@ public class ReadFromCharacter : MonoBehaviour
                     choiceButton1.SetActive(true);
                     choiceButton2.SetActive(true);
                     choiceButton3.SetActive(true);
+                    EventSystem.current.SetSelectedGameObject(choiceButton1);
                     choice1.text = dialogueManager.charDialogue.dialogueStructure[currentIndex].choicesStructure[0].shortSentence;
                     choice2.text = dialogueManager.charDialogue.dialogueStructure[currentIndex].choicesStructure[1].shortSentence;
                     choice3.text = dialogueManager.charDialogue.dialogueStructure[currentIndex].choicesStructure[2].shortSentence;
@@ -139,12 +146,14 @@ public class ReadFromCharacter : MonoBehaviour
                 {
                     choiceButton1.SetActive(true);
                     choiceButton2.SetActive(true);
+                    EventSystem.current.SetSelectedGameObject(choiceButton1);
                     choice1.text = dialogueManager.charDialogue.dialogueStructure[currentIndex].choicesStructure[0].shortSentence;
                     choice2.text = dialogueManager.charDialogue.dialogueStructure[currentIndex].choicesStructure[1].shortSentence;
                 }
             if(ChoicesStructures.Count == 1)
                 {
                     choiceButton1.SetActive(true);
+                    EventSystem.current.SetSelectedGameObject(choiceButton1);
                     choice1.text = dialogueManager.charDialogue.dialogueStructure[currentIndex].choicesStructure[0].shortSentence;
                 }
         }
@@ -186,27 +195,20 @@ public class ReadFromCharacter : MonoBehaviour
         dialogueTrigger = null;
         currentIndex = 0;
         PlayerCC._speed = 5;
+        PlayerCC._turnSpeed = 360;
 
-        if(ItemBubble.instance.Bubble) //désactiver l'objet selectionné dans l'inventaire
+        if(ItemBubble.instance.Bubble != null && isActiveAndEnabled)
         {
             ItemBubble.instance.Bubble.SetActive(false);
-            for(int i = 0; i < CluesInventory.instance.itemList.Count; i++)
-            {
-                if(CluesInventory.instance.itemList[i] != null)
-                CluesInventory.instance.itemList[i].IsSelected = false;
-            }
-            for(int i = 0; i < SuspectsInventory.instance.suspectList.Length; i++)
-            {
-                if(CluesInventory.instance.itemList[i] != null)
-                SuspectsInventory.instance.suspectList[i].IsSelected = false;
-            }
+            ItemBubble.instance.spriteBubble.GetComponent<SpriteRenderer>().sprite = null;
+            ItemBubble.instance.bubbleItem = null;
         }
     }
 
 
     public void TakeSuspect()
     {
-        if(Array.IndexOf(SuspectsInventory.instance.suspectList, dialogueManager.charDialogue.suspect) == -1)
+        if(SuspectsInventory.instance.suspectList.IndexOf(dialogueManager.charDialogue.suspect) == -1)
         {
             SuspectsInventory.instance.Add(dialogueManager.charDialogue.suspect);
             SuspectsInventory.instance.UpdateInventoryUI();

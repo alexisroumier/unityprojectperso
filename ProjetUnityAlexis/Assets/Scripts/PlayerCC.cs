@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerCC : MonoBehaviour {
     [SerializeField] private Rigidbody _rb;
     [SerializeField] public float _speed = 5;
-    [SerializeField] private float _turnSpeed = 360;
+    [SerializeField] public float _turnSpeed = 360;
     private Vector3 _input;
 
     private void Update() {

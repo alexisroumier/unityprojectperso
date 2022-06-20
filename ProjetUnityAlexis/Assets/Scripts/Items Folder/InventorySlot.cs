@@ -38,10 +38,17 @@ public class InventorySlot : MonoBehaviour
 
     public void UpdateSuspectSlot()
     {
-        if(SuspectsInventory.instance.suspectList[transform.GetSiblingIndex()] != null)
+        int index = SuspectsInventory.instance.suspectInventorySlots.IndexOf(this);
+        if(SuspectsInventory.instance.suspectList[index] != null)
         {
-            item = SuspectsInventory.instance.suspectList[transform.GetSiblingIndex()];
-            icon.GetComponent<Image>().sprite = SuspectsInventory.instance.suspectList[transform.GetSiblingIndex()].image;
+            item = SuspectsInventory.instance.suspectList[index];
+            icon.GetComponent<Image>().sprite = item.image;
+            gameObject.name = item.Name + "slot numéro 1";
+            foreach (var item in SuspectsInventory.instance.suspectList)
+            if(SuspectsInventory.instance.suspectList.Count == 0)
+            {
+            gameObject.name = item.Name + "slot numéro 1";
+            }
             icon.SetActive(true);
         }
         else

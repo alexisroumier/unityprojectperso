@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class CluesInventory : MonoBehaviour
 {
@@ -12,15 +13,18 @@ public class CluesInventory : MonoBehaviour
 
     public static CluesInventory instance;
     public Text pickUpText;
-    public int itemCurrentIndex = 0;
-    public Sprite emptyItemImage;
     public Text itemNameUI;
     public Text itemDescriptionUI;
     public GameObject cluesInventory;
+    public GameObject cluesButton;
+    Color buttonTemp;
+    Color imageTemp;
+    Color textTemp;
+    public GameObject imageTempGameObject;
+    public GameObject textTempGameObject;
     bool isHidden = false;
     public GameObject itemSlotObject;
-    public Transform itemSlotObjectTransform;
-
+    public GameObject Content;
 
     private void Awake()
     {
@@ -34,42 +38,28 @@ public class CluesInventory : MonoBehaviour
 
     private void Start()
     {
+        buttonTemp = cluesButton.GetComponent<Image>().color;       
+        imageTemp = imageTempGameObject.GetComponent<Image>().color;
+        textTemp = textTempGameObject.GetComponent<Text>().color;
         UpdateInventoryUI();
     }
 
     void Update()
     {
-
         if(Input.GetKeyUp(KeyCode.G))
         {
+            buttonTemp = new Color(r: 0.3f,0.9f,0.4f,0.2f);
+            SuspectsInventory.instance.suspectButton.GetComponent<Image>().color = buttonTemp;
+            imageTemp = new Color(0,0,0,0.4f);
+            textTemp = new Color(0.9f,0.9f,0.9f,a: 0.4f);
+            SuspectsInventory.instance.imageTempGameObject.GetComponent<Image>().color = imageTemp;
+            SuspectsInventory.instance.textTempGameObject.GetComponent<Text>().color = textTemp; 
             pickUpText.enabled = false;
-            if(isHidden)
-            {
-                isHidden = false;
-                cluesInventory.SetActive(isHidden);
-                SuspectsInventory.instance.suspectsInventory.SetActive(value: false);
-                Time.timeScale = 1f;
-            }
+
+            if(isHidden == true)
+                {OpenCluesInventory();}
             else
-            {
-                isHidden = true;
-                cluesInventory.SetActive(isHidden);
-                SuspectsInventory.instance.suspectsInventory.SetActive(value: false);
-            }
-        }
-        if(itemList.Count >=0 && Input.GetKeyDown(KeyCode.M))
-        {
-            for(int i = 0; i < itemList.Count; i++)
-            { 
-                if(itemList[i].IsSelected == true) 
-                {
-                    Debug.Log("selectionné : " + i);
-                }
-                else
-                {
-                    Debug.Log("pas selectionné : " + i);
-                }
-            }
+                {CloseCluesInventory();}
         }
     }
 
@@ -92,51 +82,48 @@ public class CluesInventory : MonoBehaviour
 
     public void UpdateInventoryUI()
     {
-        Debug.Log("inventorySlots.count" + inventorySlots.Count);
         for(int i = 0; i < inventorySlots.Count; i++)
         {
             inventorySlots[i].UpdateItemSlot();
         }
-        Debug.Log("itemCurrentIndex" + itemCurrentIndex);
-/*        if(itemList != null) //a supprimer bientôt
-        {
-            //itemImageUI1.sprite = itemList[itemCurrentIndex].image;
-        }
-        else
-        {
-            //itemImageUI1.sprite = emptyItemImage;
-            itemNameUI.text = "";
-            itemDescriptionUI.text = "";
-        } */
     }
 
     private void AddItemSlots()
     {
-        GameObject GO = Instantiate(itemSlotObject, itemSlotObjectTransform);
+        GameObject GO = Instantiate(itemSlotObject, Content.transform);
         InventorySlot newSlot = GO.GetComponent<InventorySlot>();
         inventorySlots.Add(newSlot);
     }
 
 
-    public void OpenCloseCluesInventory()
+   public void OpenCluesInventory()
     {
-        pickUpText.enabled = false;
-        if(isHidden)
-            {
-                isHidden = false;
-                cluesInventory.SetActive(isHidden);
-                SuspectsInventory.instance.suspectsInventory.SetActive(value: false);
-                Time.timeScale = 1f;
-            }
-            else
-            {
-                isHidden = true;
-                cluesInventory.SetActive(isHidden);
-                SuspectsInventory.instance.suspectsInventory.SetActive(value: false);
-            }
+        isHidden = false;
+        cluesInventory.SetActive(!isHidden);
+        SuspectsInventory.instance.suspectsInventory.SetActive(value: false);  
+        if(Content.GetComponentInChildren<Button>() != null) Content.GetComponentInChildren<Button>().Select();
+        Time.timeScale = 0f;
+        imageTemp = new Color(1,1,1,1);
+        textTemp = new Color(0.9f,0.9f,0.9f,a: 0.83f);
+        buttonTemp = new Color(0.3f,0.4f,1,1);
+        imageTempGameObject.GetComponent<Image>().color = imageTemp;
+        textTempGameObject.GetComponent<Text>().color = textTemp;
+        cluesButton.GetComponent<Image>().color = buttonTemp;
     }
 
-
-
+    public void CloseCluesInventory()
+    {
+        isHidden = true;
+        cluesInventory.SetActive(!isHidden);
+        SuspectsInventory.instance.suspectsInventory.SetActive(value: false);                
+        Time.timeScale = 1f;
+        EventSystem.current.SetSelectedGameObject(null);
+        imageTemp = new Color(0,0,0,0.4f);
+        textTemp = new Color(0.9f,0.9f,0.9f,a: 0.4f);
+        buttonTemp = new Color(0.3f,0.4f,1,0.2f);
+        imageTempGameObject.GetComponent<Image>().color = imageTemp;
+        textTempGameObject.GetComponent<Text>().color = textTemp;
+        cluesButton.GetComponent<Image>().color = buttonTemp;
+    }     
 
 }

@@ -7,5 +7,4 @@ public class Item : ScriptableObject
     public string Name;
     public string description;
     public Sprite image;
-    public bool IsSelected = false;
 }

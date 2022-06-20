@@ -11,6 +11,26 @@ public class OpenItemDetails : MonoBehaviour, IPointerEnterHandler, IPointerExit
   
     bool isHidden = false;
 
+
+    public void Update()
+     {
+        if(EventSystem.current.currentSelectedGameObject != null)
+        {
+            if(EventSystem.current.currentSelectedGameObject == gameObject)
+            {
+            objectDetails = CluesInventory.instance.objectsToActivate[0];
+            if(CluesInventory.instance.itemList[transform.GetSiblingIndex()] != null)
+            {
+            CluesInventory.instance.itemNameUI.text = CluesInventory.instance.itemList[transform.GetSiblingIndex()].Name;
+            CluesInventory.instance.itemDescriptionUI.text = CluesInventory.instance.itemList[transform.GetSiblingIndex()].description;
+            }
+            isHidden = true;
+            objectDetails.SetActive(isHidden);
+            }
+        }
+     }
+
+
     public void OnPointerEnter(PointerEventData data)
      {
         objectDetails = CluesInventory.instance.objectsToActivate[0];
@@ -27,11 +47,6 @@ public class OpenItemDetails : MonoBehaviour, IPointerEnterHandler, IPointerExit
      {
             isHidden = false;
             objectDetails.SetActive(isHidden);
-            if(Input.GetMouseButtonUp(0) && InventorySlot.instance.item.IsSelected)
-            {
-            InventorySlot.instance.item.IsSelected = false;
-            Debug.Log("On clique ailleurs. " + InventorySlot.instance.item.name + " est déselectionné : " + InventorySlot.instance.item.IsSelected);
-            }
     } 
 
 }
